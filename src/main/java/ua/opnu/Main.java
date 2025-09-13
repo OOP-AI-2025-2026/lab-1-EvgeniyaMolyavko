@@ -15,6 +15,9 @@ public class Main {
      * icyHot(2, 120) → false
      */
     public boolean icyHot(int temp1, int temp2) {
+        if((temp1< 0 && temp2>100) || (temp1>100 && temp2<0)){
+            return true;
+        }
         // TODO: write method body
         return false;
     }
@@ -27,6 +30,9 @@ public class Main {
      * in1020(8, 99) → false
      */
     public boolean in1020(int a, int b) {
+        if((a>=10 && a<=20) || (b>=10 && b<=20)){
+            return true;
+        }
         // TODO: write method body
         return false;
     }
@@ -40,6 +46,15 @@ public class Main {
      * hasTeen(20, 10, 13) → true
      */
     public boolean hasTeen(int a, int b, int c) {
+        if(a>=13 && a<=19){
+            return true;
+        }
+        if(b>=13 && b<=19){
+            return true;
+        }
+        if(c>=13 && c<=19){
+            return true;
+        }
         // TODO: write method body
         return false;
     }
@@ -55,6 +70,9 @@ public class Main {
      * sleepIn(false, true) → true
      */
     public boolean sleepIn(boolean weekday, boolean vacation) {
+        if(!weekday || vacation){
+            return true;
+        }
         // TODO: write method body
         return false;
     }
@@ -68,6 +86,9 @@ public class Main {
      * monkeyTrouble(true, false) → false
      */
     public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
+        if((aSmile && bSmile) || (!aSmile && !bSmile)){
+            return true;
+        }
         // TODO: write method body
         return false;
     }
@@ -81,6 +102,13 @@ public class Main {
      * posNeg(-4, -5, true) → true
      */
     public boolean posNeg(int a, int b, boolean negative) {
+        if(a <0 && b>0 && !negative){
+            return true;
+        } else if(b<0 && a>0 && !negative){
+            return true;
+        } else if(b<0 && a<0 && negative){
+            return true;
+        }
         // TODO: write method body
         return false;
     }
@@ -95,8 +123,14 @@ public class Main {
      * arrayCount9([1, 9, 9, 3, 9]) → 3
      */
     public int arrayCount9(int[] nums) {
+        int counter = 0;
+        for(int i=0; i<nums.length; i++){
+            if(nums[i] == 9){
+                counter++;
+            }
+        }
         // TODO: write method body
-        return 0;
+        return counter;
     }
 
     /**
@@ -108,6 +142,27 @@ public class Main {
      * arrayFront9([1, 2, 3, 4, 5]) → false
      */
     public boolean arrayFront9(int[] nums) {
+        int counter = 0;
+        int i=0;
+        if(nums.length <4){
+            while (i<nums.length){
+                if(nums[i]==9){
+                    counter++;
+                }
+                i++;
+            }
+        } else {
+            while(i<4){
+                if(nums[i]==9){
+                    counter++;
+                }
+                i++;
+            }
+        }
+
+        if(counter > 0){
+            return true;
+        }
         // TODO: write method body
         return false;
     }
@@ -120,6 +175,11 @@ public class Main {
      * array123([1, 1, 2, 1, 2, 3]) → true
      */
     public boolean array123(int[] nums) {
+        for(int i=1; i<nums.length-1; i++){
+            if( nums[i-1]==1 && nums[i]==2 && nums[i+1]==3 ){
+                return true;
+            }
+        }
         // TODO: write method body
         return false;
     }
@@ -134,8 +194,9 @@ public class Main {
      * helloName("X") → "Hello X!"
      */
     public String helloName(String name) {
+
         // TODO: write method body
-        return null;
+        return "Hello "+ name +"!";
     }
 
     /**
@@ -147,8 +208,21 @@ public class Main {
      * lastTwo("ab") → "ba"
      */
     public String lastTwo(String str) {
+        String newStr = "";
+        String letterPreLast = "";
+        String letterLast = "";
+        if(str.length()>=2){
+            letterLast = str.substring(str.length()-1);
+            letterPreLast = str.substring(str.length()-2, str.length()-1);
+            newStr = str.substring(0, str.length()-2) + letterLast + letterPreLast;
+            return newStr;
+
+        } else {
+            return str;
+        }
+
+
         // TODO: write method body
-        return null;
     }
 
     /**
@@ -159,8 +233,10 @@ public class Main {
      * middleTwo("Practice") → "ct"
      */
     public String middleTwo(String str) {
+        String newStr = "";
+        newStr = str.substring(( ( (str.length())/2)-1), ( (str.length())/2)+1);
         // TODO: write method body
-        return null;
+        return newStr;
     }
 
 
